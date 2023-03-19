@@ -5,7 +5,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-3">
-                <img class="card-img-top" src="{{ asset($post->image) }}" alt="{{ $post->title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->content }}</p>
@@ -25,7 +24,7 @@
                     @csrf
                     <input type="hidden" name="post_id" value="{{ $post->id }}">
                     <div class="form-group">
-                        <textarea class="form-control" name="content" rows="3" placeholder="Leave a comment..."></textarea>
+                        <textarea class="form-control" name="body" rows="3" placeholder="Leave a comment..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

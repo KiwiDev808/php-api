@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@include('comments')
 
 @section('content')
 <div class="container">

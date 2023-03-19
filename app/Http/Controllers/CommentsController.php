@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
@@ -14,11 +15,13 @@ class CommentsController extends Controller
             'body' => 'required',
         ]);
 
-        $comment = new Comment();
-        $comment->body = $request->input('body');
-        $comment->user_id = auth()->id();
+        $post_id = $request->input('post_id');
 
-        $post->comments()->save($comment);
+        $comment = new Comment;
+        $comment->body = $request->input('body');
+        $comment->user_id = Auth::id();
+        $comment->post_id = $post_id;
+        $comment->save();
 
         return back();
     }
