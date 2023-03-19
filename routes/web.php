@@ -19,13 +19,14 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/posts', [PostController::class, 'index'])->middleware('auth');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index')->middleware('auth');
 
 Route::get('/posts/{id}', function ($id) {
     $post = App\Models\Post::find($id);
     return view('post_detail', ['post' => $post]);
 })->name('posts.show')->middleware('auth');
 ;
+Route::post('/posts/{post}/comments', [CommentsController::class, 'store'])->middleware('auth');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
