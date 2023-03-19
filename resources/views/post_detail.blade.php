@@ -20,7 +20,7 @@
             <hr>
             <div class="mb-3">
                 @if (Auth::check())
-                <form method="post" action="{{ route('comments.store') }}">
+                <form method="post" action="{{ route('comments.store', ['post_id' => $post->id]) }}">
                     @csrf
                     <input type="hidden" name="post_id" value="{{ $post->id }}">
                     <div class="form-group">
